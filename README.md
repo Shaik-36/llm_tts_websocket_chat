@@ -26,10 +26,3 @@ cp .env.example .env
 # Edit .env and add your OPENAI_API_KEY
 ```
 
-
-```
-Client → WebSocket → LLM → TTS → WebSocket → Client
-   ↓                   ↓      ↓              ↓
-What do we        What do we              What do we
-receive?          pass around?            send back?
-```

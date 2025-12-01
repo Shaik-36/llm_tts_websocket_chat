@@ -21,6 +21,7 @@ class Settings(BaseSettings):
     llm_model: str = "gpt-3.5-turbo"
     llm_max_tokens: int = 150
     llm_temperature: float = 0.7
+    # llm_timeout: int = 30  # Max wait time for LLM API response
     llm_system_prompt: str = (
         "You are a helpful AI assistant. "
         "Provide clear, concise, and accurate responses. "
@@ -31,6 +32,7 @@ class Settings(BaseSettings):
     tts_model: str = "tts-1"
     tts_voice: str = "alloy"
     tts_response_format: str = "mp3"
+    # tts_timeout: int = 15  # Max wait time for TTS conversion
     
     model_config = SettingsConfigDict(
         env_file=".env",

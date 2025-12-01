@@ -111,13 +111,15 @@ client/
 
 tests/
   ├── conftest.py          # Shared test fixtures
+  ├── test_llm_service.py  # LLM service integration tests
   ├── test_models.py       # Model validation tests
+  ├── test_tts_service.py  # TTS service integration tests
   └── test_websocket.py    # WebSocket endpoint tests
 
 requirements.txt           # Python dependencies
-.env.example              # Configuration template
-pytest.ini                # Pytest configuration
-README.md                 # This file
+.env.example               # Configuration template
+pytest.ini                 # Pytest configuration
+README.md                  # This file
 
 ```
 
@@ -156,25 +158,33 @@ pytest tests/ -v
 ### Run Specific Test File
 
 ```bash
-pytest tests/test_models.py      # Test data validation
-pytest tests/test_websocket.py   # Test WebSocket endpoints
+pytest tests/test_models.py       # Test data validation
+pytest tests/test_websocket.py    # Test WebSocket endpoints
+pytest tests/test_llm_service.py  # Test LLM API integration
+pytest tests/test_tts_service.py  # Test TTS API integration
 ```
 
 ### Expected Output
 
 ```
-tests/test_models.py ......                [ 60%]
+tests/test_llm.py .....                    [ 25%]
+tests/test_models.py ......                [ 55%]
+tests/test_tts.py .....                    [ 80%]
 tests/test_websocket.py ....               [100%]
 
-=========== 10 passed in 0.67s ===========
+=========== 20 passed in 1.23s ===========
 ```
 
 ### What's Tested
 
 - **test_models.py:** Data validation, input constraints (6 tests)
 - **test_websocket.py:** Server endpoints, WebSocket connection (4 tests)
+- **test_llm_service.py**: LLM API integration, error handling, timeouts (5 tests)
+- **test_tts.py**: TTS API integration, audio generation, error handling (5 tests)
 
-All tests verify core functionality and error handling.
+
+
+All tests verify core functionality, API integration, and comprehensive error handling.
 
 
 ## Troubleshooting

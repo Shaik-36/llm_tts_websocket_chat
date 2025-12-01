@@ -11,11 +11,21 @@ def client():
     return TestClient(app)
 
 
+# ================================================================
+# TEST 1: Health status
+# ================================================================
+
+
 def test_health_endpoint(client):
     """Should return healthy status"""
     response = client.get("/health")
     assert response.status_code == 200
     assert response.json()["status"] == "healthy"
+
+
+# ================================================================
+# TEST 2: Service info
+# ================================================================
 
 
 def test_root_endpoint(client):
@@ -25,11 +35,21 @@ def test_root_endpoint(client):
     assert "service" in response.json()
 
 
+# ================================================================
+# TEST 3: WebSocket connection
+# ================================================================
+
+
 def test_websocket_connection(client):
     """Should accept WebSocket connection"""
     with client.websocket_connect("/ws") as websocket:
         # Connection should be established
         assert websocket is not None
+
+
+# ================================================================
+# TEST 4: WebSocket Invalid Message Format
+# ================================================================
 
 
 def test_websocket_invalid_message(client):

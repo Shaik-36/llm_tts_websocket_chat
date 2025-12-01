@@ -10,18 +10,34 @@ Real-time text-to-speech chat using OpenAI APIs.
 
 ### Installation
 
+#### Clone the repo
 ```bash
-git clone https://github.com/Shaik-36/chatai_llm_tts.git
-cd chatai_llm_tts
+git clone https://github.com/Shaik-36/llm_tts_websocket_chat.git
+cd llm_tts_websocket_chat
+```
 
+#### Create a Virtual Environment
+
+For Windows
+```bash
 python -m venv venv
+```
+For Mac
+```bash
+python3 -m venv venv
+```
+#### Activate the Virtual Environment
 
-# Windows:
+For Windows
+```bash
 source venv/Scripts/activate
-
-# Mac/Linux:
+```
+For Mac
+```bash
 source venv/bin/activate
-
+```
+#### Install the dependencies
+```bash
 pip install -r requirements.txt
 ```
 
@@ -29,10 +45,10 @@ pip install -r requirements.txt
 
 ```bash
 cp .env.example .env
-# Edit .env and add OPENAI_API_KEY=sk-your-key
+# Edit .env and replace with your OPENAI_API_KEY=sk-your-key
 ```
 
-## Run
+## Running the app
 
 **Terminal 1 - Server:**
 ```bash
@@ -47,9 +63,11 @@ uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload
 
 
 **Terminal 2 - Client:**
+
 ```bash
 cd client
-python -m http.server 5000
+python -m http.server 5000   # Windows
+python3 -m http.server 5000  # Mac
 ```
 
 **Browser:**
@@ -103,8 +121,8 @@ client/
   └── script.js            # WebSocket client logic
 
 requirements.txt           # Python dependencies
-.env.example              # Configuration template
-README.md                 # This file
+.env.example               # Configuration template
+README.md                  # This file
 ```
 
 ## Configuration

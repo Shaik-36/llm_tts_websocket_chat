@@ -18,23 +18,15 @@ cd llm_tts_websocket_chat
 
 #### Create a Virtual Environment
 
-For Windows
 ```bash
-python -m venv venv
-```
-For Mac
-```bash
-python3 -m venv venv
+python -m venv venv   # Windows
+python3 -m venv venv  # Mac
 ```
 #### Activate the Virtual Environment
 
-For Windows
 ```bash
-source venv/Scripts/activate
-```
-For Mac
-```bash
-source venv/bin/activate
+source venv/Scripts/activate  # Windows
+source venv/bin/activate      # Mac
 ```
 #### Install the dependencies
 ```bash
@@ -52,7 +44,8 @@ cp .env.example .env
 
 **Terminal 1 - Server:**
 ```bash
-python -m src.main
+python -m src.main    # Windows
+python3 -m src.main   # Mac
 ```
 or
 
@@ -95,13 +88,9 @@ Open `http://localhost:5000`
 **Flow Diagram:**
 ```
 Browser → WebSocket → Server → OpenAI Chat API → Response
-                        |
-                        |  
                         ↓
                     OpenAI TTS API → Audio
-                        | 
-                        |  
-                        ↓ 
+                        ↓
                     WebSocket → Browser → Play Audio
 ```
 
@@ -120,9 +109,16 @@ client/
   ├── index.html           # Web UI (minimal)
   └── script.js            # WebSocket client logic
 
+tests/
+  ├── conftest.py          # Shared test fixtures
+  ├── test_models.py       # Model validation tests
+  └── test_websocket.py    # WebSocket endpoint tests
+
 requirements.txt           # Python dependencies
-.env.example               # Configuration template
-README.md                  # This file
+.env.example              # Configuration template
+pytest.ini                # Pytest configuration
+README.md                 # This file
+
 ```
 
 ## Configuration
@@ -142,6 +138,44 @@ REQUEST_TIMEOUT=30
 - `GET /` - Service info and configuration
 - `GET /health` - Health check (for monitoring)
 - `WebSocket /ws` - Main chat endpoint
+
+## Testing
+
+### Run All Tests
+
+```bash
+pytest tests/
+```
+
+### Run with Verbose Output
+
+```bash
+pytest tests/ -v
+```
+
+### Run Specific Test File
+
+```bash
+pytest tests/test_models.py      # Test data validation
+pytest tests/test_websocket.py   # Test WebSocket endpoints
+```
+
+### Expected Output
+
+```
+tests/test_models.py ......                [ 60%]
+tests/test_websocket.py ....               [100%]
+
+=========== 10 passed in 0.67s ===========
+```
+
+### What's Tested
+
+- **test_models.py:** Data validation, input constraints (6 tests)
+- **test_websocket.py:** Server endpoints, WebSocket connection (4 tests)
+
+All tests verify core functionality and error handling.
+
 
 ## Troubleshooting
 

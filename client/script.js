@@ -79,15 +79,10 @@ function stopAudio() {
 
 
 function playAudio(base64) {
-    const binary = atob(base64);
-    const bytes = new Uint8Array(binary.length);
-    for (let i = 0; i < binary.length; i++) {
-        bytes[i] = binary.charCodeAt(i);
-    }
-    const blob = new Blob([bytes], { type: 'audio/mp3' });
-    currentAudio = new Audio(URL.createObjectURL(blob));
-    currentAudio.play();
-    currentAudio.onended = () => { currentAudio = null; };
+  const audio = new Audio(`data:audio/mp3;base64,${base64}`); // note the backticks
+  audio.play();
+  audio.onended = () => {
+  };
 }
 
 

@@ -101,20 +101,19 @@ src/
   ├── main.py              # FastAPI app, routes, lifecycle
   ├── config.py            # Configuration from .env
   ├── models.py            # Pydantic validation models
+  ├── websocket_handler.py # WebSocket connection & orchestration
   ├── llm_service.py       # OpenAI Chat API integration
-  ├── tts_service.py       # OpenAI Speech API integration
-  └── websocket_handler.py # WebSocket connection & orchestration
+  └── tts_service.py       # OpenAI Speech API integration
 
 client/
   ├── index.html           # Web UI (minimal)
   └── script.js            # WebSocket client logic
 
 tests/
-  ├── conftest.py          # Shared test fixtures
-  ├── test_llm_service.py  # LLM service integration tests
   ├── test_models.py       # Model validation tests
+  ├── test_websocket.py    # WebSocket endpoint tests
   ├── test_tts_service.py  # TTS service integration tests
-  └── test_websocket.py    # WebSocket endpoint tests
+  └── test_llm_service.py  # LLM service integration tests
 
 requirements.txt           # Python dependencies
 .env.example               # Configuration template
@@ -180,7 +179,7 @@ tests/test_websocket.py ....               [100%]
 - **test_models.py:** Data validation, input constraints (6 tests)
 - **test_websocket.py:** Server endpoints, WebSocket connection (4 tests)
 - **test_llm_service.py**: LLM API integration, error handling, timeouts (5 tests)
-- **test_tts.py**: TTS API integration, audio generation, error handling (5 tests)
+- **test_tts_service.py**: TTS API integration, audio generation, error handling (5 tests)
 
 
 

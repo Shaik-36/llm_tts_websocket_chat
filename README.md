@@ -1,6 +1,6 @@
 # LLM-TTS WebSocket Chat
 
-Real-time text-to-speech chat using OpenAI APIs.
+**Real-time conversational AI with text-to-speech using OpenAI APIs over WebSocket.**
 
 ## Setup
 
@@ -11,6 +11,7 @@ Real-time text-to-speech chat using OpenAI APIs.
 ### Installation
 
 #### Clone the repo
+Open your `Terminal` and enter below commands:
 ```bash
 git clone https://github.com/Shaik-36/llm_tts_websocket_chat.git
 cd llm_tts_websocket_chat
@@ -20,13 +21,13 @@ cd llm_tts_websocket_chat
 
 ```bash
 python -m venv venv   # Windows
-python3 -m venv venv  # Mac
+python3 -m venv venv  # Mac/Linux
 ```
 #### Activate the Virtual Environment
 
 ```bash
 source venv/Scripts/activate  # Windows
-source venv/bin/activate      # Mac
+source venv/bin/activate      # Mac/Linux
 ```
 #### Install the dependencies
 ```bash
@@ -45,16 +46,11 @@ Open `https://platform.openai.com/api-keys`
 ## Running the app
 
 **Terminal 1 - Server:**
-```bash
-python -m src.main    # Windows
-python3 -m src.main   # Mac
-```
-or
 
+Run using Uvicorn with automatic reload:
 ```bash
 uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload
 ```
-
 
 
 **Terminal 2 - Client:**
@@ -62,7 +58,7 @@ uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload
 ```bash
 cd client
 python -m http.server 5000   # Windows
-python3 -m http.server 5000  # Mac
+python3 -m http.server 5000  # Mac/Linux
 ```
 
 **Browser:**
@@ -200,7 +196,7 @@ All tests verify core functionality, API integration, and comprehensive error ha
 ## Current Limitations
 
 - **Single-user only:** System designed for one connection at a time
-- **No persistence:** Messages are lost when server restarts (in-memory only)
+- **No persistence:** Messages are lost when server restarts (No Chat Memories stored)
 - **No authentication:** Anyone with access to URL can connect
 - **No audio controls:** Cannot pause, resume, or adjust volume
 - **Localhost only:** Not suitable for production without additional security
@@ -214,13 +210,14 @@ All tests verify core functionality, API integration, and comprehensive error ha
 - Display message timestamps and connection status indicators
 
 ### Medium-term (Moderate)
+- Add message history export (JSON/PDF)
 - Add user authentication with API keys or JWT tokens
 - Implement rate limiting to prevent abuse
-- Add message history export (JSON/PDF)
 - Support multiple voice options in UI
 - Add error recovery and automatic reconnection
 
 ### Long-term (Advanced)
+- Add Tool Calling using LangChain and LangGraph
 - Implement streaming responses for faster feedback
 - Add multi-modal support (image input/output)
 - Deploy to cloud (AWS, GCP, Azure)

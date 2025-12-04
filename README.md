@@ -191,8 +191,15 @@ All tests verify core functionality, API integration, and comprehensive error ha
 | Connection refused | Server not running: `python -m src.main` |
 | Invalid API key | Check `.env` file has correct OPENAI_API_KEY |
 | Audio doesn't play | Refresh browser, check browser console |
-| Ctrl+C doesn't work | Press Ctrl+C again or use Task Manager |
+| Port Already in Use | Press Ctrl+C again or use Task Manager |
 
+`Note:` Another common error in `mac/linux` Port Already in use
+Run these two commands to kill the process running on that port.
+```bash
+lsof -i :8000  # List the process running on port 8000
+
+kill -9 <PID>  # Take PID from the Listed process 
+```
 ## Current Limitations
 
 - **Single-user only:** System designed for one connection at a time
